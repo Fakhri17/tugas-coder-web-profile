@@ -1,0 +1,4 @@
+alpine js
+tailwind
+daisy ui
+swup

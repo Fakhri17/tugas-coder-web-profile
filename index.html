@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Porfolio</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body>
+  <!-- <nav class="fixed z-30 w-full bg-white border-b-2 border-red-300 shadow">
+    <div x-data="{showMenu : false}" class="container max-w-screen-lg mx-auto flex justify-between h-14">
+      Bran
+      <a href="#" class="flex items-center cursor-pointer hover:bg-purple-50 px-2 ml-3">
+        Log
+        <div class="rounded bg-purple-400 text-white font-bold w-10 h-10 flex justify-center text-3xl pt-0.5">F</div>
+        <div class="text-dark font-semibold ml-2">Fakhri Dev</div>
+      </a>
+      Navbar Toggle Button
+      <button @click="showMenu = !showMenu"
+        class="block md:hidden text-gray-700 p-2 rounded hover:border focus:border focus:bg-gray-100 my-2 mr-5"
+        type="button" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      Nav Link
+      <ul class="md:flex text-gray-700 text-base mr-3 origin-top"
+        :class="{ 'block absolute top-14 border-b bg-white w-full p-2': showMenu, 'hidden': !showMenu}" id="navbar-main"
+        x-cloak>
+        <li class="text-dark px-3 cursor-pointer hover:bg-purple-50 flex items-center hover:text-gray-800":class="showMenu && 'py-1'">
+          <a href="#">Laravel</a>
+        </li>
+       
+      </ul>
+    </div>
+  </nav> -->
+  <div class="py-10 w-full h-full bg-red-500">
+    <div class="w-full h-full my-20">
+      <div class="container mx-auto max-w-screen-lg">
+        <img class="h-48 w-48 rounded-full mx-auto object-cover lazy" data-src="./assets/image/myphoto.jpg" alt="">
+        <h1 class="text-4xl text-white text-center my-3 tracking-wide font-mono">Fakhri's Here</h1>
+        <p class="text-center text-white font-semibold">Junior Web DEV | Game Addict | Weebs</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-20">
+    <div class="container mx-auto lg:max-w-screen-lg max-w-xs">
+      <div class="flex flex-wrap justify-between">
+        <div class="w-full lg:w-2/5 lg:mb-0 mb-3">
+          <h2 class="text-3xl font-semibold mb-3">Summary</h2>
+          <hr class="border-2 border-red-500 w-24">
+          <div class="mt-5 text-lg">
+            <p class="mb-3">
+              Hello 👋 . My Name Fakhri Alauddin. I am 21 years old. I like coding since vocational high school. 
+              I am a bachelor of <span class="font-semibold text-red-500">Informatika</span> student from <span class="font-semibold text-red-500">
+                Institut Teknologi Telkom Surabaya.</span>
+              </p>
+            <p>My hobby is coding, playing game, and badminton. The reason I entered the world of programming because it looks fun and challenging</a> 
+            </p>
+          </div>
+        </div>
+        <div class="w-full lg:w-2/4">
+          <img class="rounded-3xl shadow-lg lazy" data-src="./assets/image/myphoto.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20" x-data="profile()" x-init="connect()">
+    <div class="container mx-auto lg:max-w-screen-lg max-w-xs">
+      <h2 class="text-3xl font-semibold mb-3 text-center">Skills</h2>
+      <hr class="border-2 border-red-500 w-24 mx-auto">
+      <div class="my-5">
+        <template x-if="!experience.length">
+          <div>
+            loading......
+          </div>
+        </template>
+        <template x-if="experience.length">
+          <div class="flex flex-wrap lg:gap-4 gap-2 lg:justify-center">
+            <template x-for="item in experience">
+              <div :class="`lg:w-1/5 btn-custom-trans cursor-pointer ${item.bg} shadow border-2 text-center rounded py-3 px-3`">
+                <h3 class="text-2xl font-bold" x-text="item.title"></h3>
+              </div>
+            </template>
+            
+          </div>
+        </template>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20" x-data="contact()" x-init="connect()">
+    <div class="container mx-auto lg:max-w-screen-lg max-w-xs">
+      <div class="flex flex-wrap justify-between">      
+        <div class="w-full lg:w-2/4">
+          <img class="lazy" data-src="./assets/image/27.png" alt="">
+        </div>
+        <div class="w-full lg:w-2/5">
+          <h2 class="text-3xl font-semibold mb-3">Contact</h2>
+          <hr class="border-2 border-red-500 w-24">
+          <div class="mt-5">
+            <template x-if="!sosmed.length">
+              <div>
+                loading......
+              </div>
+            </template>  
+            <template x-if="sosmed.length">
+              <ul class="list-disc">
+                <template x-for="item in sosmed">
+                  <li class="font-semibold text-lg" >
+                    <a class="cursor-pointer hover:text-red-500" :href="`${item.url}`" target="_blank">
+                      <i :class="`${item.class} mr-3`"></i><span x-text="item.title"></span>
+                    </a>
+                  </li>
+                </template>
+              </ul> 
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="bg-red-300 text-center lg:text-left">
+    <div class="0 text-center p-4">
+      Build With Love ❤️ and Coffe ☕ By Fakhri Alauddin
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.6.1/dist/lazyload.min.js"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./assets/script.js"></script>
+</body>
+
+</html>
